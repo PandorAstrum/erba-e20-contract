@@ -1,0 +1,122 @@
+const ERBA = artifacts.require("ERBA");
+
+contract('ERBA', (accounts) => {
+  it('coin name should be ERBA', async () => {
+    // deploy the contract
+    const erbaInstance = await ERBA.deployed();
+    const balance = await erbaInstance.getBalance.call(accounts[0]);
+
+    assert.equal(balance.valueOf(), 600000000, "600000000 wasn't in the first account");
+  });
+  it('should put 600000000 ERBA in the first account', async () => {
+    const erbaInstance = await ERBA.deployed();
+    const balance = await erbaInstance.getBalance.call(accounts[0]);
+
+    assert.equal(balance.valueOf(), 600000000, "600000000 wasn't in the first account");
+  });
+  it('should have 18 decimals for the ERBA', async () => {
+    const erbaInstance = await ERBA.deployed();
+    const balance = await erbaInstance.getBalance.call(accounts[0]);
+
+    assert.equal(balance.valueOf(), 600000000, "600000000 wasn't in the first account");
+  });
+  it('should call a function that depends on a linked library', async () => {
+    const erbaInstance = await ERBA.deployed();
+    const erbaBalance = (await erbaInstance.getBalance.call(accounts[0])).toNumber();
+    const erbaEthBalance = (await erbaInstance.getBalanceInEth.call(accounts[0])).toNumber();
+
+    assert.equal(erbaEthBalance, 2 * erbaBalance, 'Library function returned unexpected function, linkage may be broken');
+  });
+  it('should send coin correctly', async () => {
+    const erbaInstance = await ERBA.deployed();
+
+    // Setup 2 accounts.
+    const accountOne = accounts[0];
+    const accountTwo = accounts[1];
+
+    // Get initial balances of first and second account.
+    const accountOneStartingBalance = (await erbaInstance.getBalance.call(accountOne)).toNumber();
+    const accountTwoStartingBalance = (await erbaInstance.getBalance.call(accountTwo)).toNumber();
+
+    // Make transaction from first account to second.
+    const amount = 10;
+    await erbaInstance.sendCoin(accountTwo, amount, { from: accountOne });
+
+    // Get balances of first and second account after the transactions.
+    const accountOneEndingBalance = (await erbaInstance.getBalance.call(accountOne)).toNumber();
+    const accountTwoEndingBalance = (await erbaInstance.getBalance.call(accountTwo)).toNumber();
+
+
+    assert.equal(accountOneEndingBalance, accountOneStartingBalance - amount, "Amount wasn't correctly taken from the sender");
+    assert.equal(accountTwoEndingBalance, accountTwoStartingBalance + amount, "Amount wasn't correctly sent to the receiver");
+  });
+  it('should vested properly', async () => {
+    const erbaInstance = await ERBA.deployed();
+
+    // Setup 2 accounts.
+    const accountOne = accounts[0];
+    const accountTwo = accounts[1];
+
+    // Get initial balances of first and second account.
+    const accountOneStartingBalance = (await erbaInstance.getBalance.call(accountOne)).toNumber();
+    const accountTwoStartingBalance = (await erbaInstance.getBalance.call(accountTwo)).toNumber();
+
+    // Make transaction from first account to second.
+    const amount = 10;
+    await erbaInstance.sendCoin(accountTwo, amount, { from: accountOne });
+
+    // Get balances of first and second account after the transactions.
+    const accountOneEndingBalance = (await erbaInstance.getBalance.call(accountOne)).toNumber();
+    const accountTwoEndingBalance = (await erbaInstance.getBalance.call(accountTwo)).toNumber();
+
+
+    assert.equal(accountOneEndingBalance, accountOneStartingBalance - amount, "Amount wasn't correctly taken from the sender");
+    assert.equal(accountTwoEndingBalance, accountTwoStartingBalance + amount, "Amount wasn't correctly sent to the receiver");
+  });
+  it('Another Vesting Test', async () => {
+    const erbaInstance = await ERBA.deployed();
+
+    // Setup 2 accounts.
+    const accountOne = accounts[0];
+    const accountTwo = accounts[1];
+
+    // Get initial balances of first and second account.
+    const accountOneStartingBalance = (await erbaInstance.getBalance.call(accountOne)).toNumber();
+    const accountTwoStartingBalance = (await erbaInstance.getBalance.call(accountTwo)).toNumber();
+
+    // Make transaction from first account to second.
+    const amount = 10;
+    await erbaInstance.sendCoin(accountTwo, amount, { from: accountOne });
+
+    // Get balances of first and second account after the transactions.
+    const accountOneEndingBalance = (await erbaInstance.getBalance.call(accountOne)).toNumber();
+    const accountTwoEndingBalance = (await erbaInstance.getBalance.call(accountTwo)).toNumber();
+
+
+    assert.equal(accountOneEndingBalance, accountOneStartingBalance - amount, "Amount wasn't correctly taken from the sender");
+    assert.equal(accountTwoEndingBalance, accountTwoStartingBalance + amount, "Amount wasn't correctly sent to the receiver");
+  });
+  it('3rd vesting test', async () => {
+    const erbaInstance = await ERBA.deployed();
+
+    // Setup 2 accounts.
+    const accountOne = accounts[0];
+    const accountTwo = accounts[1];
+
+    // Get initial balances of first and second account.
+    const accountOneStartingBalance = (await erbaInstance.getBalance.call(accountOne)).toNumber();
+    const accountTwoStartingBalance = (await erbaInstance.getBalance.call(accountTwo)).toNumber();
+
+    // Make transaction from first account to second.
+    const amount = 10;
+    await erbaInstance.sendCoin(accountTwo, amount, { from: accountOne });
+
+    // Get balances of first and second account after the transactions.
+    const accountOneEndingBalance = (await erbaInstance.getBalance.call(accountOne)).toNumber();
+    const accountTwoEndingBalance = (await erbaInstance.getBalance.call(accountTwo)).toNumber();
+
+
+    assert.equal(accountOneEndingBalance, accountOneStartingBalance - amount, "Amount wasn't correctly taken from the sender");
+    assert.equal(accountTwoEndingBalance, accountTwoStartingBalance + amount, "Amount wasn't correctly sent to the receiver");
+  });
+});
