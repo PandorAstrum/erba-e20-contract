@@ -1,0 +1,25 @@
+{
+  "name": "erba_erc20_smartcontract",
+  "version": "1.0.0",
+  "description": "erba coin",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PandorAstrum/erba-erc20-contract.git"
+  },
+  "author": "Ashiquzamman Khan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PandorAstrum/erba-erc20-contract/issues"
+  },
+  "homepage": "https://github.com/PandorAstrum/erba-erc20-contract#readme",
+  "devDependencies": {
+    "openzeppelin-solidity": "^2.2.0"
+  }
+}

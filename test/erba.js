@@ -4,6 +4,7 @@ contract('ERBA', (accounts) => {
   it('coin name should be ERBA', async () => {
     // deploy the contract
     const erbaInstance = await ERBA.deployed();
+    
     const balance = await erbaInstance.getBalance.call(accounts[0]);
 
     assert.equal(balance.valueOf(), 600000000, "600000000 wasn't in the first account");
