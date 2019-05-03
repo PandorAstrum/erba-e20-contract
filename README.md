@@ -1,32 +1,41 @@
-# EXAMPLE Product Name 
-> Short blurb about what your product does.
+# ERBA erc20 Token contract with vesting
+> Smart Contracts contained the ERC20 Token named ERBA (ERBA) and vesting ability.
 
-[![Python Version][python-image]][python-url]
-[![NPM Version][npm-image]][npm-url]
-[![Downloads Stats][npm-downloads]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Build Status][appveyor-image]][appveyor-url]
+[![Solidity Version][solidity-image]][solidity-url]
 
-One to two paragraph statement about your product and what it does.
-
-![header-pic]
+ERBA is a ERC20 Standard Token, where all tokens are pre-assigned to the creator.
+ * Name is ERBA, Symbol is ERBA
+ * Note they can later distribute these tokens as they wish using `transfer` and other `StandardToken` functions.
+ * There will be a max cap of 600 000 000 ERBA tokens (100%)
+ * Decimals are 18.
+ * The token has ability for vesting
+ * ERBA Token is Mintable
 
 ## Installation & Setup
-
-OS X & Linux & Windows:
-
-```bash
-npm install my-crazy-module --save
-pip install -r requirements.txt
-```
 
 Download (Extras): 
 - [NPM](https://www.npmjs.com/get-npm)
 - [VS CODE](https://code.visualstudio.com/)
+- [TRUFFLE](https://truffleframework.com/)
+```bash
+npm install -g truffle
+```
+- [GANACE-CLI](https://github.com/trufflesuite/ganache-cli)
+```bash
+npm install -g ganache-cli
+```
+
+OS X & Linux & Windows:
+
+```bash
+npm install --save-dev
+```
 
 ## Usage example
-
-A few motivating and useful examples of how your product can be used. Spice this up with code blocks and potentially more screenshots.
+Start the demo blockchain:
+```
+ganache-cli
+```
 
 To compile the project run:
 ```
@@ -43,23 +52,34 @@ To test the project run:
 truffle test
 ```
 
-_For more examples and usage, please refer to the [ReadTheDoc][ReadTheDoc]._
+To flat into a single contract run:
+```
+sh flatten.sh
+```
+
+### ERBA contracts Functions
+In Alphabetic Order
+
+**somefunction**
+```cs
+function somefucntion(address[] _target)
+```
+specific instruction what the function does
+<br>
+*parameters*
+```cs
+_target = ["0xca35b7d915458ef540ade6068dfe2f44e8fa733c", "0xca35b7d915458ef540ade6068dfe2f44e8fa733c"]
+```
+<br>
+<br>
+<br>
 
 
 ## Release History
 
-* 0.2.1
-    * CHANGE: Update docs (module code remains unchanged)
-* 0.2.0
-    * CHANGE: Remove `setDefaultXYZ()`
-    * ADD: Add `init()`
-* 0.1.1
-    * FIX: Crash when calling `baz()` (Thanks @GenerousContributorName!)
-* 0.1.0
-    * The first proper release
-    * CHANGE: Rename `foo()` to `bar()`
-* 0.0.1
-    * Work in progress
+* V1.0
+    * ADD: Vesting ERC20 Token
+    * ADD: Token Audits and test
 
 ## Meta
 
@@ -67,31 +87,8 @@ Ashiquzzaman Khan – [@dreadlordn](https://twitter.com/dreadlordn)
 
 Distributed under the MIT license. See ``LICENSE`` for more information.
 
-[https://github.com/PandorAstrum/Readme_Template](https://github.com/PandorAstrum/Readme_Template)
-
-## Contributing
-
-1. Fork it (<https://github.com/PandorAstrum/Readme_Template/fork>)
-2. Create your feature branch (`git checkout -b feature/fooBar`)
-3. Commit your changes (`git commit -am 'Add some fooBar'`)
-4. Push to the branch (`git push origin feature/fooBar`)
-5. Create a new Pull Request
+[https://github.com/PandorAstrum/erba-erc20-contract.git](https://github.com/PandorAstrum/erba-erc20-contract.git)
 
 <!-- Markdown link & img dfn's -->
-[python-image]: https://img.shields.io/badge/Python-3.6-yellowgreen.svg?style=flat-square
-[python-url]: https://www.python.org/
-
-[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
-[npm-url]: https://www.npmjs.com/
-[npm-downloads]: https://img.shields.io/npm/dm/datadog-metrics.svg?style=flat-square
-
-[travis-image]: https://travis-ci.org/PandorAstrum/_vault.svg?branch=master
-[travis-url]: https://travis-ci.org/PandorAstrum/_vault
-
-[appveyor-image]: https://ci.appveyor.com/api/projects/status/8dxrtild5jew79pq?svg=true
-[appveyor-url]: https://ci.appveyor.com/project/PandorAstrum/vault
-
-[ReadTheDoc]: https://github.com/yourname/yourproject/wiki
-
-<!-- Header Pictures and Other media-->
-[header-pic]: header.png
+[solidity-image]: https://img.shields.io/badge/Solidity-0.5.6-yellowgreen.svg?style=flat-square
+[solidity-url]: https://solidity.readthedocs.io/en/v0.5.6/
